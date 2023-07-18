@@ -4,6 +4,7 @@ import java.math.*;
 
 /**
  * 백준 1914 하노이탑
+ * 메모리 274012KB, 시간 9336ms
  * https://www.acmicpc.net/problem/1914
  * @author 김신영
  * "재귀로 구현"

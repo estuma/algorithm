@@ -3,6 +3,7 @@ import java.io.*;
 
 /**
  * 백준 2751 수 정렬하기2 https://www.acmicpc.net/problem/2751
+ * 메모리 160120KB 1332ms
  * @author 김신영 
  * Collections.sort()이용하여 정렬 -> TimSort로 O(nlogn)보장
  * StringBuilder와 BufferedReader를 사용하여 빠른 입출력
