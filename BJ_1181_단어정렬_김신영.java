@@ -1,16 +1,14 @@
-package hyundai;
-
 import java.util.*;
 import java.io.*;
 
 /**
  * 백준 1181 단어 정렬 https://www.acmicpc.net/problem/1181
- * 
+ * 21796KB	624ms
  * @author 김신영
  * 
  * 길이가 짧은것부터 정렬하고, 길이가 같으면 사전순으로 정렬
  * priorityQueue를 이용해서 길이순 / 사전순으로 우선순위 부여
- * 이전에 나온 값과 비교하며 중복을 제거한다.
+ * 
  */
 
 public class Main {
