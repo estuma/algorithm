@@ -17,18 +17,18 @@ import java.io.*;
  */
 
 public class Main {
-	
+
 	public static void main(String[] args) throws IOException {
 		// 사용자 입력
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		// 공백 기준으로 스트링 분리
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		int N = Integer.parseInt(st.nextToken()); // 나무 수
-		int M = Integer.parseInt(st.nextToken()); // 필요한 나무 미터
-		int arr[] = new int[N];
-		// 나무 길이 입력
+		int n = Integer.parseInt(st.nextToken()); // 나무 수
+		int m = Integer.parseInt(st.nextToken()); // 필요한 나무 미터
+		int arr[] = new int[n];
+		// 전체 나무 높이 입력
 		st = new StringTokenizer(br.readLine());
-		for(int i = 0; i < N; i++) {
+		for(int i = 0; i < n; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
@@ -36,12 +36,14 @@ public class Main {
 		int low = 0;
 		int high = 1000000000;
 		
+		
+		// m 이상이 나와야 하므로 Lower Bound 사용
 		// 이진탐색 low가 high보다 커지면 종료
-		while(low <= high) {
-			// 중간값 설정
+		while(low < high) {
+			// 이진탐색 low가 high보다 커지면 종료
 			int mid = (low + high) / 2;
 
-			// 나무의 높이가 10억까지 가능하므로 long타입으로 선언
+			// 이진탐색 low가 high보다 커지면 종료
 			long sum = 0;
 			
 			// 전체 나무를 mid값으로 잘라 나온 합
@@ -51,16 +53,15 @@ public class Main {
 				}
 			}
 			
-			// 합이 필요한 높이 이상이면 -> 최소값이 mid보다 큼
-			if(sum >= M) {
+			// 합이 필요한 높이 이상이면 최소값이 mid보다 큼 -> low 갱신
+			if(sum >= m) {
 				low = mid + 1;
-			} else {	// 합이 더 작으면 나무를 더 잘라야하므로 -> high를 mid - 1 으로 설정
-				high = mid - 1;
+			} else { // 합이 더 작으면 나무를 더 잘라야하므로 -> high를 mid값으로 설정
+				high = mid;
 			}
-
 		}
 		
 		// 값 출력
-		System.out.println(high);
+		System.out.println(low-1);
 	}
 }
