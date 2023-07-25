@@ -57,11 +57,11 @@ public class Main {
 			if(sum >= m) {
 				low = mid + 1;
 			} else { // 합이 더 작으면 나무를 더 잘라야하므로 -> high를 mid값으로 설정
-				high = mid;
+				high = mid - 1;
 			}
 		}
 		
 		// 값 출력
-		System.out.println(low-1);
+		System.out.println(high);
 	}
 }
