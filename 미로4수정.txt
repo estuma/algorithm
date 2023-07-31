@@ -1,0 +1,173 @@
+import java.io.*;
+import java.util.*;
+
+/**
+ * <pre>
+ * 미로
+ * N*N칸(N: 3~20) 미로 (1,1)부터 시작
+ * 이유: 점퍼를 이용하여 (0,0)으로 나간다. or N*N 칸을 벗어나면 (0,0)
+ * (0,0)으로 이동했다면 이동 종료.
+ * 
+ * 각 칸에는 동서남북으로 문이 있다?
+ * 어떤 방향의 문으로 몇 칸을 이동하는지 제공됨
+ * 주어진 지시를 모두 수행했을 때 도착 지점 출력
+ * </pre>
+ * 
+ * @author 김신영
+ *
+ */
+public class Maze4 {
+
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int T = Integer.parseInt(br.readLine());
+		int[] answer = new int[2];
+
+		for (int testCase = 1; testCase <= T; testCase++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			while (st.hasMoreTokens()) {
+				int N = Integer.parseInt(st.nextToken());
+				int row = Integer.parseInt(st.nextToken());
+				int col = Integer.parseInt(st.nextToken());
+				int[][] arr = new int[N + 1][N + 1];
+
+				// 점퍼의 좌표
+				int[][] jumperLoc = new int[Integer.parseInt(st.nextToken())][2];
+				st = new StringTokenizer(br.readLine());
+				for (int i = 0; i < jumperLoc.length; i++) {
+					arr[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())] = 1;
+				}
+
+				// 방향, 이동칸수
+				int[][] direction = new int[Integer.parseInt(br.readLine())][2];
+				st = new StringTokenizer(br.readLine());
+				for (int i = 0; i < direction.length; i++) {
+					direction[i][0] = Integer.parseInt(st.nextToken());
+					direction[i][1] = Integer.parseInt(st.nextToken());
+				}
+
+				answer = move2(arr, row, col, direction);
+			}
+
+			System.out.println("#" + testCase + " " + answer[0] + " " + answer[1]);
+		}
+	}
+
+	public static int[] move2(int[][] arr, int row, int col, int[][] direction) {
+		int[] answer = { 0, 0 };
+		int[] dirRow = { -1, 0, 1, 0 };
+		int[] dirCol = { 0, 1, 0, -1 };
+		int currRow = row;
+		int currCol = col;
+
+		for (int moveCnt = 0; moveCnt < direction.length; moveCnt++) {
+			boolean isValid = true;
+			boolean isJumper = false;
+			int dir = direction[moveCnt][0] - 1;
+			int move = direction[moveCnt][1];
+			int newRow = currRow + dirRow[dir] * move;
+			int newCol = currCol + dirCol[dir] * move;
+
+			if (newRow > 0 && newRow < arr.length && newCol > 0 && newCol < arr.length) {
+				// 점퍼가 경로상에 있는지 검사
+				for (int i = 1; i <= move; i++) {
+					if (arr[currRow + i * dirRow[dir]][currCol + i * dirCol[dir]] == 1) {
+						isJumper = true;
+						break;
+					}
+				}
+				currRow = newRow;
+				currCol = newCol;
+			} else {
+				isValid = false;
+			}
+
+			// 배열 밖으로 벗어났거나 점퍼를 지나가면 0,0 위치 반환
+			if (!isValid || isJumper) {
+				return answer;
+			}
+
+		}
+
+		answer[0] = currRow;
+		answer[1] = currCol;
+		return answer;
+
+	}
+
+	public static int[] move(int[][] arr, int row, int col, int[][] direction) {
+		int currRow = row;
+		int currCol = col;
+		int[] answer = { 0, 0 };
+		boolean isValid = true;
+		boolean isJumper = false;
+
+		for (int moveCnt = 0; moveCnt < direction.length; moveCnt++) {
+			switch (direction[moveCnt][0]) {
+			case 1:
+				if (currRow - direction[moveCnt][1] > 0) {
+					for (int i = 1; i <= direction[moveCnt][1]; i++) {
+						if (arr[currRow - i][currCol] == 1) {
+							isJumper = true;
+							break;
+						}
+					}
+					currRow -= direction[moveCnt][1];
+				} else {
+					isValid = false;
+				}
+				break;
+			case 2:
+				if (currCol + direction[moveCnt][1] < arr.length) {
+					for (int i = 1; i <= direction[moveCnt][1]; i++) {
+						if (arr[currRow][currCol + i] == 1) {
+							isJumper = true;
+							break;
+						}
+					}
+					currCol += direction[moveCnt][1];
+				} else {
+					isValid = false;
+				}
+				break;
+			case 3:
+				if (currRow + direction[moveCnt][1] < arr.length) {
+					for (int i = 1; i <= direction[moveCnt][1]; i++) {
+						if (arr[currRow + i][currCol] == 1) {
+							isJumper = true;
+							break;
+						}
+					}
+					currRow += direction[moveCnt][1];
+				} else {
+					isValid = false;
+				}
+				break;
+			case 4:
+				if (currCol - direction[moveCnt][1] > 0) {
+					for (int i = 1; i <= direction[moveCnt][1]; i++) {
+						if (arr[currRow][currCol - i] == 1) {
+							isJumper = true;
+							break;
+						}
+					}
+					currCol -= direction[moveCnt][1];
+				} else {
+					isValid = false;
+				}
+				break;
+			}
+
+			// 배열 밖으로 벗어났거나 점퍼를 지나가면 0,0 위치 반환
+			if (!isValid || isJumper) {
+				System.out.println(isValid + " " + isJumper);
+				return answer;
+			}
+
+		}
+
+		answer[0] = currRow;
+		answer[1] = currCol;
+		return answer;
+	}
+}
