@@ -114,21 +114,15 @@ public class BJ_17472_다리만들기2_김신영 {
         		break;
         	}
         	
-//        	System.out.println(Arrays.toString(isUsed));
-        	
             int[] curr = pq.poll();
             
-//            System.out.println(Arrays.toString(curr));
-
             // 방문한 적 있으면 continue
             if (isUsed[curr[1]]) {
                 continue;
             }
 
-            System.out.println("-> " + Arrays.toString(curr));
             answer += curr[2];
             isUsed[curr[0]] = true;
-//            isUsed[curr[1]] = true;
             cnt++;
         }
 
