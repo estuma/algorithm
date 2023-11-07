@@ -6,34 +6,34 @@ import java.util.StringTokenizer;
 
 /**
  * <pre>
- * D4 4193 ¼ö¿µ´ëÈ¸ °á½ÂÀü https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?contestProbId=AWKaG6_6AGQDFARV
+ * D4 4193 ìˆ˜ì˜ëŒ€íšŒ ê²°ìŠ¹ì „ https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?contestProbId=AWKaG6_6AGQDFARV
  * 18,432 kb, 113 ms
  * ---------- ---------- ----------
- * NxN ¾È¿¡¼­ °¡Àå ºü¸¥ ±æ Ã£±â, ¸î ÃÊ ¸¸¿¡ °ñÀÎÇÒ ¼ö ÀÖ´ÂÁö
- * 1: Áö³ª°¥ ¼ö ¾ø´Â Àå¾Ö¹°
- * 2: 2, 5, 8, ... ÃÊ °£°ÝÀ¸·Î Áö³ª°¥ ¼ö ÀÖ´Â Àå¾Ö¹°
- * 2 À§·Î ÇÑ ¹ø Åë°úÇÑ °æ¿ì °è¼Ó ¸Ó¹°·¯ÀÖÀ» ¼ö ÀÖÀ½
- * ---------- BFS È°¿ë ----------
- * Å¥¸¦ È°¿ëÇÏ¿© °Ë»çÇÑ´Ù.
- * ½ÃÀÛ À§Ä¡¸¦ ±âÁØÀ¸·Î À§ºÎÅÍ ½Ã°è¹æÇâÀ¸·Î Å½»öÇØÁØ´Ù.
- * °°Àº ±æÀ» °è¼Ó Áö³ª°¡´Â°ÍÀ» ¸·±â À§ÇØ ¹æ¹®Çß´ÂÁö È®ÀÎÇÑ´Ù.
- * -- °¡Àå ÂªÀº ½Ã°£À» Ã£´Â °Í.
- * ´ÙÀ½ ÃÊ¿¡¼­ Å½»öÇÒ ¼ö ÀÖ´Â ¸ðµç °æ¿ì¸¦ Å¥¿¡ ³Ö°í Å½»ö -> ÀÌ ·ÎÁ÷À» °è¼Ó ¹Ýº¹
+ * NxN ì•ˆì—ì„œ ê°€ìž¥ ë¹ ë¥¸ ê¸¸ ì°¾ê¸°, ëª‡ ì´ˆ ë§Œì— ê³¨ì¸í•  ìˆ˜ ìžˆëŠ”ì§€
+ * 1: ì§€ë‚˜ê°ˆ ìˆ˜ ì—†ëŠ” ìž¥ì• ë¬¼
+ * 2: 2, 5, 8, ... ì´ˆ ê°„ê²©ìœ¼ë¡œ ì§€ë‚˜ê°ˆ ìˆ˜ ìžˆëŠ” ìž¥ì• ë¬¼
+ * 2 ìœ„ë¡œ í•œ ë²ˆ í†µê³¼í•œ ê²½ìš° ê³„ì† ë¨¸ë¬¼ëŸ¬ìžˆì„ ìˆ˜ ìžˆìŒ
+ * ---------- BFS í™œìš© ----------
+ * íë¥¼ í™œìš©í•˜ì—¬ ê²€ì‚¬í•œë‹¤.
+ * ì‹œìž‘ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ìœ„ë¶€í„° ì‹œê³„ë°©í–¥ìœ¼ë¡œ íƒìƒ‰í•´ì¤€ë‹¤.
+ * ê°™ì€ ê¸¸ì„ ê³„ì† ì§€ë‚˜ê°€ëŠ”ê²ƒì„ ë§‰ê¸° ìœ„í•´ ë°©ë¬¸í–ˆëŠ”ì§€ í™•ì¸í•œë‹¤.
+ * -- ê°€ìž¥ ì§§ì€ ì‹œê°„ì„ ì°¾ëŠ” ê²ƒ.
+ * ë‹¤ìŒ ì´ˆì—ì„œ íƒìƒ‰í•  ìˆ˜ ìžˆëŠ” ëª¨ë“  ê²½ìš°ë¥¼ íì— ë„£ê³  íƒìƒ‰ -> ì´ ë¡œì§ì„ ê³„ì† ë°˜ë³µ
  * ++
- * Å½»öÇÒ ¼ö ÀÖ´Â °æ¿ì:
- * 1. ¹æ¹®ÇÑ Àû ¾ø´Â ±æÀÌ¸é¼­ 
- * 2. °æ±âÀå ¹è¿­ÀÇ °ªÀÌ 0(±æ) ¶Ç´Â 2(¼Ò¿ëµ¹ÀÌ)ÀÎ °æ¿ì
+ * íƒìƒ‰í•  ìˆ˜ ìžˆëŠ” ê²½ìš°:
+ * 1. ë°©ë¬¸í•œ ì  ì—†ëŠ” ê¸¸ì´ë©´ì„œ 
+ * 2. ê²½ê¸°ìž¥ ë°°ì—´ì˜ ê°’ì´ 0(ê¸¸) ë˜ëŠ” 2(ì†Œìš©ëŒì´)ì¸ ê²½ìš°
  * ++
- * Áö³ª°¥ ¼ö ÀÖ´Â Àå¾Ö¹°ÀÌ ÀÖ±â ¶§¹®¿¡ ÇöÀç ½Ã°£¿¡ Åë°úÇÒ ¼ö ÀÖ´ÂÁö °Ë»ç ÈÄ
- * 1. ¼Ò¿ëµ¹ÀÌ°¡ ÀÖÀ¸¸é(Åë°úÇÒ ¼ö ¾øÀ¸¸é) ´Ù½Ã Å¥¿¡ ³Ö°í ´ÙÀ½ ÃÊ¿¡ ´Ù½Ã °Ë»ç
- * 2. ¼Ò¿ëµ¹ÀÌ°¡ ¾ø´Ù¸é(Åë°úÇÒ ¼ö ÀÖÀ¸¸é) °è¼Ó Å½»öÇÑ´Ù.
+ * ì§€ë‚˜ê°ˆ ìˆ˜ ìžˆëŠ” ìž¥ì• ë¬¼ì´ ìžˆê¸° ë•Œë¬¸ì— í˜„ìž¬ ì‹œê°„ì— í†µê³¼í•  ìˆ˜ ìžˆëŠ”ì§€ ê²€ì‚¬ í›„
+ * 1. ì†Œìš©ëŒì´ê°€ ìžˆìœ¼ë©´(í†µê³¼í•  ìˆ˜ ì—†ìœ¼ë©´) ë‹¤ì‹œ íì— ë„£ê³  ë‹¤ìŒ ì´ˆì— ë‹¤ì‹œ ê²€ì‚¬
+ * 2. ì†Œìš©ëŒì´ê°€ ì—†ë‹¤ë©´(í†µê³¼í•  ìˆ˜ ìžˆìœ¼ë©´) ê³„ì† íƒìƒ‰í•œë‹¤.
  * </pre>
  * 
- * @author ±è½Å¿µ
+ * @author ê¹€ì‹ ì˜
  *
  */
 
-public class D4_4193_¼ö¿µ´ëÈ¸°á½ÂÀü_±è½Å¿µ {
+public class D4_4193_ìˆ˜ì˜ëŒ€íšŒê²°ìŠ¹ì „_ê¹€ì‹ ì˜ {
 
 	static int T, N, startRow, startCol, endRow, endCol;
 	static int[][] arr;
@@ -47,12 +47,12 @@ public class D4_4193_¼ö¿µ´ëÈ¸°á½ÂÀü_±è½Å¿µ {
 		int answer;
 
 		for (int test_case = 1; test_case <= T; test_case++) {
-			// ¼ö¿µÀåÀÇ Å©±â
+			// ìˆ˜ì˜ìž¥ì˜ í¬ê¸°
 			N = Integer.parseInt(br.readLine());
 			arr = new int[N][N];
 			isVisited = new boolean[N][N];
 
-			// ¼ö¿µÀå Á¤º¸ ÀÔ·Â
+			// ìˆ˜ì˜ìž¥ ì •ë³´ ìž…ë ¥
 			for (int i = 0; i < N; i++) {
 				st = new StringTokenizer(br.readLine());
 				for (int j = 0; j < N; j++) {
@@ -60,12 +60,12 @@ public class D4_4193_¼ö¿µ´ëÈ¸°á½ÂÀü_±è½Å¿µ {
 				}
 			}
 
-			// ½ÃÀÛ À§Ä¡
+			// ì‹œìž‘ ìœ„ì¹˜
 			st = new StringTokenizer(br.readLine());
 			startRow = Integer.parseInt(st.nextToken());
 			startCol = Integer.parseInt(st.nextToken());
 
-			// µµÂø À§Ä¡
+			// ë„ì°© ìœ„ì¹˜
 			st = new StringTokenizer(br.readLine());
 			endRow = Integer.parseInt(st.nextToken());
 			endCol = Integer.parseInt(st.nextToken());
@@ -86,32 +86,32 @@ public class D4_4193_¼ö¿µ´ëÈ¸°á½ÂÀü_±è½Å¿µ {
 		seconds = 0;
 		while (!queue.isEmpty()) {
 			int size = queue.size();
-			// ÇöÀç Å¥¿¡ µé¾îÀÖ´Â ¼ö ¸¸Å­ °Ë»ç -> nÃÊÀÏ ¶§ °æ¿ì¸¦ ÇÑ¹ø¿¡ °Ë»çÇÒ ¼ö ÀÖÀ½!
+			// í˜„ìž¬ íì— ë“¤ì–´ìžˆëŠ” ìˆ˜ ë§Œí¼ ê²€ì‚¬ -> nì´ˆì¼ ë•Œ ê²½ìš°ë¥¼ í•œë²ˆì— ê²€ì‚¬í•  ìˆ˜ ìžˆìŒ!
 			for (int i = 0; i < size; i++) {
 				int[] tmp = queue.poll();
 
-				// ¸ñÀûÁö¿¡ µµÂøÇÏ¸é ÇöÀç ÃÊ¸¦ ¹ÝÈ¯ÇÑ´Ù.
+				// ëª©ì ì§€ì— ë„ì°©í•˜ë©´ í˜„ìž¬ ì´ˆë¥¼ ë°˜í™˜í•œë‹¤.
 				if (tmp[0] == endRow && tmp[1] == endCol) {
 					return seconds;
 				}
 
 				for (int dir = 0; dir < 4; dir++) {
-					// ´ÙÀ½ ¹æ¹® À§Ä¡ »ý¼º
+					// ë‹¤ìŒ ë°©ë¬¸ ìœ„ì¹˜ ìƒì„±
 					int[] next = { tmp[0] + dirRow[dir], tmp[1] + dirCol[dir] };
-					// °¡´ÉÇÑ À§Ä¡ÀÎÁö °Ë»ç
+					// ê°€ëŠ¥í•œ ìœ„ì¹˜ì¸ì§€ ê²€ì‚¬
 					if (isValid(next[0], next[1])) {
-						// 0: ±æ -> Å¥¿¡ ³Ö°í °è¼Ó °Ë»ç
+						// 0: ê¸¸ -> íì— ë„£ê³  ê³„ì† ê²€ì‚¬
 						if (arr[next[0]][next[1]] == 0) {
 							isVisited[next[0]][next[1]] = true;
 							queue.offer(next);
 						} 
-						// 2: ¼Ò¿ëµ¹ÀÌ -> ÇöÀçÃÊ % 3 ÀÇ °ªÀÌ 2ÀÎ °æ¿ì¿¡¸¸ Áö³ª°¥ ¼ö ÀÖ´Ù.  (2, 5, 8, 11ÃÊ ...)
+						// 2: ì†Œìš©ëŒì´ -> í˜„ìž¬ì´ˆ % 3 ì˜ ê°’ì´ 2ì¸ ê²½ìš°ì—ë§Œ ì§€ë‚˜ê°ˆ ìˆ˜ ìžˆë‹¤.  (2, 5, 8, 11ì´ˆ ...)
 						else if (arr[next[0]][next[1]] == 2) {
-							// Áö³ª°¥ ¼ö ÀÖÀ»¶§±îÁö ±â´Ù¸®±â -> ÇöÀç À§Ä¡¸¦ ´Ù½Ã Å¥¿¡ ³ÖÀ½
+							// ì§€ë‚˜ê°ˆ ìˆ˜ ìžˆì„ë•Œê¹Œì§€ ê¸°ë‹¤ë¦¬ê¸° -> í˜„ìž¬ ìœ„ì¹˜ë¥¼ ë‹¤ì‹œ íì— ë„£ìŒ
 							if (seconds % 3 != 2) {
 								queue.offer(tmp);
 							} else {
-								// Áö³ª°¥ ¼ö ÀÖ´Â ½Ã°£ÀÌ µÈ´Ù¸é Å¥¿¡ ³Ö°í Å½»ö °è¼Ó
+								// ì§€ë‚˜ê°ˆ ìˆ˜ ìžˆëŠ” ì‹œê°„ì´ ëœë‹¤ë©´ íì— ë„£ê³  íƒìƒ‰ ê³„ì†
 								isVisited[next[0]][next[1]] = true;
 								queue.offer(next);
 							}
@@ -126,11 +126,11 @@ public class D4_4193_¼ö¿µ´ëÈ¸°á½ÂÀü_±è½Å¿µ {
 		return -1;
 	}
 
-	// row, col °ªÀÌ ¹è¿­ ³»ÀÌ°í, ÇØ´ç À§Ä¡¸¦ ¹æ¹®ÇÑ Àû ¾ø´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+	// row, col ê°’ì´ ë°°ì—´ ë‚´ì´ê³ , í•´ë‹¹ ìœ„ì¹˜ë¥¼ ë°©ë¬¸í•œ ì  ì—†ëŠ”ì§€ í™•ì¸í•˜ëŠ” í•¨ìˆ˜
 	public static boolean isValid(int r, int c) {
-		// ¹è¿­ ¹üÀ§ ³»ÀÎÁö!
+		// ë°°ì—´ ë²”ìœ„ ë‚´ì¸ì§€!
 		if (r >= 0 && r < arr.length && c >= 0 && c < arr.length) {
-			// ¹æ¹®ÇÑ Àû ¾ø´ÂÁö!
+			// ë°©ë¬¸í•œ ì  ì—†ëŠ”ì§€!
 			if (!isVisited[r][c]) {
 				return true;
 			}
