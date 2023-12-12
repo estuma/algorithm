@@ -6,21 +6,21 @@ import java.util.StringTokenizer;
 
 /**
  * <pre>
- * D3 4192 ¼ö¿µ´ëÈ¸ https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?contestProbId=AWKaCc-KABgDFAT2
+ * D3 4192 ìˆ˜ì˜ëŒ€íšŒ https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?contestProbId=AWKaCc-KABgDFAT2
  * ---------- ---------- ----------
- * NxN ¾È¿¡¼­ °¡Àå ºü¸¥ ±æ Ã£±â -> µµÂøÁöÁ¡±îÁö ¸î Á¶°¡ °É¸®´ÂÁö
- * 1: Áö³ª°¥ ¼ö ¾ø´Â Àå¾Ö¹°
- * ---------- BFS È°¿ë ----------
- * Queue¸¦ ÀÌ¿ëÇÑ BFS
+ * NxN ì•ˆì—ì„œ ê°€ì¥ ë¹ ë¥¸ ê¸¸ ì°¾ê¸° -> ë„ì°©ì§€ì ê¹Œì§€ ëª‡ ì¡°ê°€ ê±¸ë¦¬ëŠ”ì§€
+ * 1: ì§€ë‚˜ê°ˆ ìˆ˜ ì—†ëŠ” ì¥ì• ë¬¼
+ * ---------- BFS í™œìš© ----------
+ * Queueë¥¼ ì´ìš©í•œ BFS
  * 
  * 
  * </pre>
  * 
- * @author ±è½Å¿µ
+ * @author ê¹€ì‹ ì˜
  *
  */
 
-public class D3_4192_¼ö¿µ´ëÈ¸_±è½Å¿µ {
+public class D3_4192_ìˆ˜ì˜ëŒ€íšŒ_ê¹€ì‹ ì˜ {
 
 	static int T, N, startRow, startCol, endRow, endCol;
 	static int[][] arr;
@@ -33,12 +33,12 @@ public class D3_4192_¼ö¿µ´ëÈ¸_±è½Å¿µ {
 		int answer;
 
 		for (int test_case = 1; test_case <= T; test_case++) {
-			// ¼ö¿µÀåÀÇ Å©±â
+			// ìˆ˜ì˜ì¥ì˜ í¬ê¸°
 			N = Integer.parseInt(br.readLine());
 			arr = new int[N][N];
 			isVisited = new boolean[N][N];
 
-			// ¼ö¿µÀå Á¤º¸ ÀÔ·Â
+			// ìˆ˜ì˜ì¥ ì •ë³´ ì…ë ¥
 			for (int i = 0; i < N; i++) {
 				st = new StringTokenizer(br.readLine());
 				for (int j = 0; j < N; j++) {
@@ -46,12 +46,12 @@ public class D3_4192_¼ö¿µ´ëÈ¸_±è½Å¿µ {
 				}
 			}
 
-			// ½ÃÀÛ À§Ä¡
+			// ì‹œì‘ ìœ„ì¹˜
 			st = new StringTokenizer(br.readLine());
 			startRow = Integer.parseInt(st.nextToken());
 			startCol = Integer.parseInt(st.nextToken());
 
-			// µµÂø À§Ä¡
+			// ë„ì°© ìœ„ì¹˜
 			st = new StringTokenizer(br.readLine());
 			endRow = Integer.parseInt(st.nextToken());
 			endCol = Integer.parseInt(st.nextToken());
