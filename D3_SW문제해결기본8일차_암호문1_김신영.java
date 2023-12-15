@@ -6,45 +6,50 @@ import java.util.StringTokenizer;
 
 /**
  * <pre>
- * ¿øº» ¾ÏÈ£¹®À» ¹Ş°í
- * ¸í·É¾î¸¦ ¹Ş¾Æ ÀÎµ¦½º À§Ã¼¿¡¼­ »õ·Î¿î °ªµéÀ» Ãß°¡ÇØÁØ´Ù.
- * Áß°£¿¡ °ªÀ» Ãß°¡ÇØ¾ßÇÏ¹Ç·Î linkedList »ç¿ë
+ * ì›ë³¸ ì•”í˜¸ë¬¸ì„ ë°›ê³ 
+ * ëª…ë ¹ì–´ë¥¼ ë°›ì•„ ì¸ë±ìŠ¤ ìœ„ì²´ì—ì„œ ìƒˆë¡œìš´ ê°’ë“¤ì„ ì¶”ê°€í•´ì¤€ë‹¤.
+ * ì¤‘ê°„ì— ê°’ì„ ì¶”ê°€í•´ì•¼í•˜ë¯€ë¡œ linkedList ì‚¬ìš©
  * </pre>
- * @author ±è½Å¿µ
+ * @author ê¹€ì‹ ì˜
  *
  */
 
-public class D3_SW¹®Á¦ÇØ°á±âº»8ÀÏÂ÷_¾ÏÈ£¹®1_±è½Å¿µ {
+public class D3_SWë¬¸ì œí•´ê²°ê¸°ë³¸8ì¼ì°¨_ì•”í˜¸ë¬¸1_ê¹€ì‹ ì˜ {
 
     public static void main(String[] args) throws Exception {
         StringBuilder sb = new StringBuilder();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
         for (int test_case = 1; test_case <= 10; test_case++) {            
-            // 1. ¿øº» ¾ÏÈ£¹®ÀÇ ±æÀÌ N ( 10 ¡Â N ¡Â 20 ÀÇ Á¤¼ö)
+            // 1. ì›ë³¸ ì•”í˜¸ë¬¸ì˜ ê¸¸ì´ N ( 10 â‰¤ N â‰¤ 20 ì˜ ì •ìˆ˜)
             int N = Integer.parseInt(br.readLine());
             List<Integer> list = new LinkedList<>();
-            // 2. ¿øº» ¾ÏÈ£¹®
+            
+            // 2. ì›ë³¸ ì•”í˜¸ë¬¸
             StringTokenizer st = new StringTokenizer(br.readLine());
             for (int i = 0; i < N; i++) {
                 list.add(Integer.parseInt(st.nextToken()));
             }
-            // 3. ¿øº» ¾ÏÈ£¹®ÀÇ ±æÀÌ N ( 10 ¡Â N ¡Â 20 ÀÇ Á¤¼ö)
+            
+            // 3. ì›ë³¸ ì•”í˜¸ë¬¸ì˜ ê¸¸ì´ N ( 10 â‰¤ N â‰¤ 20 ì˜ ì •ìˆ˜)
             int M = Integer.parseInt(br.readLine());
-            // 4. ¸í·É¾î
+            
+            // 4. ëª…ë ¹ì–´
             st = new StringTokenizer(br.readLine());
             for(int i = 0; i < M; i++) {
                 st.nextToken();    // I
                 int idx = Integer.parseInt(st.nextToken());
                 int num = Integer.parseInt(st.nextToken());
                 for(int j = 0; j < num; j++) {
-                	// ÀÎµ¦½º À§Ä¡¿¡ »õ·Î¿î ¼ıÀÚ Ãß°¡
+                	// ì¸ë±ìŠ¤ ìœ„ì¹˜ì— ìƒˆë¡œìš´ ìˆ«ì ì¶”ê°€
                     list.add(idx++, Integer.parseInt(st.nextToken()));
                 }
             }
-            // Á¤´ä ¸¸µé±â
+            
+            // ì •ë‹µ ë§Œë“¤ê¸°
             sb.append("#" + test_case + " ");
-            // 10¹øÂ°±îÁö Ãâ·Â
+            
+            // 10ë²ˆì§¸ê¹Œì§€ ì¶œë ¥
             for(int i = 0; i < 10; i++) {
                 sb.append(list.get(i) + " ");
             }
