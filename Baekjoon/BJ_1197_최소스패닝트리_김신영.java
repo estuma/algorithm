@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
  * <pre>
  * BJ_1197_최소스패닝트리_김신영 | https://www.acmicpc.net/problem/1197
  * ----- ----- -----
- * MST (크루스칼 -> union-find)
+ * MST(크루스칼 -> union-find)
  * </pre>
  * 
  * @author 김신영
