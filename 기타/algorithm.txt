@@ -1,0 +1,2 @@
+숫자 범위가 Integer.MAX_VALUE ~ Integer.MIN_VALUE이면 
+comparator에서 o1 - o2 할 경우 overflow 발생 가능
