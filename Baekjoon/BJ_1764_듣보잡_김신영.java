@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 
+// 25,748KB	260ms
+
 public class BJ_1764_듣보잡_김신영 {
 
 	public static void main(String[] args) throws Exception {
